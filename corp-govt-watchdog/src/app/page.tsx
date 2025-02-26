@@ -1,6 +1,5 @@
 import Image from "next/image";
-// import { Send } from "lucide-react";
-// import { useState } from "react";
+import Footer from "../../components/Footer" // Adjust the path if needed
 
 // export default function MessageInput() {
 //   const [message, setMessage] = useState("");
@@ -50,16 +49,15 @@ export default function Home() {
       <main className="flex flex-col gap-8 items-center sm:items-start">
         <div className="w-full max-w-4xl flex justify-center items-center">
           <Image
-            className="dark:invert"
             src="/open-paws-logo.png"
             alt="open paws logo"
-            width={60}
+            width={75}
             height={38}
             priority
           />
-          <h1 className="text-4xl">Welcome to your Watchdog, Sam</h1>
+          <h1 className="text-4xl font-bold p-4">Welcome to your Watchdog, Sam</h1>
         </div>
-        <div className="flex justify-center" >Watchdog is your personal assistant for researching, monitoring, and reporting on regulatory changes impacting the treatment of animals</div>
+        <div className="flex justify-center text-xl text-center">Watchdog is your personal assistant for researching, monitoring, and reporting on regulatory changes impacting the treatment of animals</div>
 
         <div className="w-full flex justify-center">
           <form
@@ -76,63 +74,23 @@ export default function Home() {
             <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
               Send
             </button>
-
           </form>
         </div>
 
         <div className="w-full flex justify-center text-lg">Need inspiration? Here are some things you can ask me:</div>
 
-        <div className="grid grid-cols-3 gap-4 p-8 max-w-4xl mx-auto">
+        {/* PROMPT SUGGESTIONS */}
+        <div className="grid grid-cols-3 gap-4 max-w-4xl mx-auto">
           {promptSuggestions.map((p) => (
-            <div key={p.id} className="border-gray-300 border-2 italic text-white p-3 text-center text-sm rounded-lg">
+            <div key={p.id} className="border-gray-300 border-2 italic p-3 text-center text-sm rounded-lg">
               {p.text}
             </div>
           ))}
         </div>
 
-
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Disclaimer
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Privacy Statement
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {/* <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          /> */}
-          Terms & Conditions
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          © 2025 OpenPaws.AI and/or its affiliates. All rights reserved.
-        </a>
-      </footer>
+
+      <Footer />
     </div>
   );
 }
