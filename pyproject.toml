@@ -1,0 +1,23 @@
+[project]
+name = "code4compassion"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "weaviate-client>=4.11.0",
+    "weaviate>=0.1.2",
+    "fastapi>=0.115.8",
+    "pre-commit>=4.1.0",
+    "pydantic-settings>=2.8.0",
+    "uvicorn>=0.34.0",
+    "jinja2>=3.1.5",
+    "itsdangerous>=2.2.0",
+    "requests>=2.32.3",
+    "sqlmodel>=0.0.22",
+    "alembic>=1.14.1",
+    "sqlalchemy>=2.0.38",
+]
+
+[tool.uv.workspace]
+members = ["server"]
