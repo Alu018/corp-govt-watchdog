@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Poppins } from "next/font/google";
-import Sidebar from "../../components/Sidebar" // Adjust the path if needed
+import Sidebar from "../components/Sidebar" // Adjust the path if needed
 import "./globals.css";
 
 const poppins = Poppins({

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Footer from "../../components/Footer" // Adjust the path if needed
+import Footer from "../components/Footer" // Adjust the path if needed
 
 // export default function MessageInput() {
 //   const [message, setMessage] = useState("");
