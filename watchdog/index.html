@@ -1,59 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pressure Campaign Research Agent</title>
+    <link rel="stylesheet" href="./css/style.css">
+    
+    <!-- <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        createChat({
+            webhookUrl: 'https://openpaws.app.n8n.cloud/webhook/f92addea-05d1-4b7f-8d8a-271861fae9d3/chat'
+        });
+    </script> -->
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0 auto;
-            width: 50%;
-        }
-        form {
-            max-width: 400px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        label, input, textarea {
-            display: block;
-            width: 100%;
-            margin-bottom: 10px;
-        }
-        button {
-            background-color: blue;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: darkblue;
-        }
+       
     </style>
 </head>
+
 <body>
-    <h2>Pressure Campaign Research Agent</h2>
-    <div>This AI-powered agent will perform in-depth research into your target and any related individuals or organisations.</div>
+    <h2>Welcome to your Watchdog, Sam</h2>
+    <img class="open-paws-logo" src="./public/open-paws-logo.png" alt="Description of the image">
+    <div><b>Watchdog</b> is your personal assistant for researching, monitoring, and reporting on regulatory changes impacting the treatment of animals</div>
     <form action="https://openpaws.app.n8n.cloud/webhook-test/7d977fcf-05e7-4248-bf9e-04db99380c87" method="POST">
-        <label for="name">What is your email address?</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="message">What is the name of the organisation or individual you want to investigate?</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
+        <label for="name">Tell me about your campaign</label>
+        <input type="text" id="text" name="text" required>
 
-        <label for="name">What is the URL for their website?</label>
-        <input type="text" id="url" name="url" required>
-
-        <label for="name">What's the nature of your campaign?</label>
-        <input type="text" id="campaign" name="campaign" required>
-        
-        <label for="name">What kind of information are you looking for?</label>
-        <input type="text" id="info" name="info" required>
-        
         <button type="submit">Submit</button>
     </form>
 </body>
+
 </html>
