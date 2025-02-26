@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Submission</title>
+    <title>Pressure Campaign Research Agent</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 50px;
+            margin: 0 auto;
+            width: 50%;
         }
         form {
             max-width: 400px;
@@ -34,16 +35,23 @@
     </style>
 </head>
 <body>
-    <h2>Submit Your Information</h2>
-    <form action="submit.php" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        
-        <label for="email">Email:</label>
+    <h2>Pressure Campaign Research Agent</h2>
+    <div>This AI-powered agent will perform in-depth research into your target and any related individuals or organisations.</div>
+    <form action="https://openpaws.app.n8n.cloud/webhook-test/7d977fcf-05e7-4248-bf9e-04db99380c87" method="POST">
+        <label for="name">What is your email address?</label>
         <input type="email" id="email" name="email" required>
         
-        <label for="message">Message:</label>
+        <label for="message">What is the name of the organisation or individual you want to investigate?</label>
         <textarea id="message" name="message" rows="4" required></textarea>
+
+        <label for="name">What is the URL for their website?</label>
+        <input type="text" id="url" name="url" required>
+
+        <label for="name">What's the nature of your campaign?</label>
+        <input type="text" id="campaign" name="campaign" required>
+        
+        <label for="name">What kind of information are you looking for?</label>
+        <input type="text" id="info" name="info" required>
         
         <button type="submit">Submit</button>
     </form>
