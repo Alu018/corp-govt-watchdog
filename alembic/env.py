@@ -12,7 +12,6 @@ config = context.config
 config.set_main_option("sqlalchemy.url", os.getenv("DB_URI", "sqlite:///database.db"))
 
 # Tables
-from app.models.base import Base
 from app.models.tables import *
 
 # Interpret the config file for Python logging.
@@ -23,8 +22,8 @@ if config.config_file_name is not None:
 # add your model's MetaData object here
 # for 'autogenerate' support
 # from myapp import mymodel
-# target_metadata = mymodel.Base.metadata
-target_metadata = Base.metadata
+from sqlmodel import SQLModel
+target_metadata = SQLModel.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
