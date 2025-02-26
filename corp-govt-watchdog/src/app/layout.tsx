@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Poppins } from "next/font/google";
 import Sidebar from "../components/Sidebar" // Adjust the path if needed
+import Footer from "../components/Footer" // Adjust the path if needed
 import "./globals.css";
 
 const poppins = Poppins({
@@ -37,11 +38,12 @@ export default function RootLayout({
       >
         <div className="flex h-screen">
           <Sidebar />
-          
+
           <main className="flex-1 p-8 overflow-auto">
             {children}
           </main>
         </div>
+        <Footer />
       </body>
     </html>
   );

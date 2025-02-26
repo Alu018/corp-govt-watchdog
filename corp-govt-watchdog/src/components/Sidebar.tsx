@@ -3,7 +3,7 @@ import { Home, Settings, Bell } from "lucide-react";
 
 export default function Sidebar() {
     return (
-        <div className="w-128 h-screen bg-black text-white p-8 fixed">
+        <div className="w-64 h-screen bg-black text-white p-8">
             <nav className="flex-1">
                 <ul className="space-y-4">
                     <li>
