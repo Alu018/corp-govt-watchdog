@@ -29,5 +29,9 @@ make-migrations:
 migrate:
 	uv run alembic upgrade head
 
-run-server: install-backend-deps make-migrations migrate
+run-server:
 	uv run uvicorn app.server.main:app --reload --env-file=$(ENV_FILE)
+
+run-migrations-and-server: make-migrations migrate
+	uv run uvicorn app.server.main:app --reload --env-file=$(ENV_FILE)
+	

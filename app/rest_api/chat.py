@@ -1,31 +1,30 @@
 import logging
-from uuid import uuid4
+from typing import Any
 
-from fastapi import APIRouter, Request
-from fastapi.responses import HTMLResponse
-from fastapi.templating import Jinja2Templates
+from fastapi import APIRouter
+from fastapi.exceptions import HTTPException
+import requests
+
 from app.settings import Settings
 
 logger = logging.getLogger(__file__)
 
 
-template = Jinja2Templates(directory="client/")
-
-
 router = APIRouter()
 
 
-@router.get(
-    "/",
-    response_class=HTMLResponse,
-)
-async def home(request: Request):
-    return template.TemplateResponse(request, name="dist/index.html")
-
-
-@router.get(
+@router.post(
     "/query",
-    tags=["Chat"],
+    tags=["n8n"],
 )
-async def report_info(request: Request, query: str) -> str:
-    return f"Hello, world! This is your query: {query}"
+async def launch_n8n_workflow(text: str) -> dict[str, Any]:
+    try:
+        return requests.post(
+            Settings.N8N_WEBHOOK_URL,
+            json={"text": text}
+        ).json()
+    except Exception as e:
+        raise HTTPException(
+            status_code=400,
+            detail=str(e)
+        )

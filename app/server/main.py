@@ -1,5 +1,5 @@
 import os
-
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -8,6 +8,7 @@ from app.rest_api.chat import router as chat_router
 from app.rest_api.login import router as user_router
 from app.settings import Settings
 from starlette.middleware.sessions import SessionMiddleware
+
 
 # FastAPI app
 app = FastAPI()
@@ -29,4 +30,4 @@ app.add_middleware(
 )
 
 # Static / templates
-app.mount("/assets", StaticFiles(directory="client/dist/assets"), name="assets")
+# app.mount("/assets", StaticFiles(directory="client/dist/assets"), name="assets")
