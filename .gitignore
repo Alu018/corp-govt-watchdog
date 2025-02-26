@@ -12,4 +12,7 @@ wheels/
 # Database
 *.db
 
-# DS_Store
+.DS_Store
+
+# Environment files
+.env
