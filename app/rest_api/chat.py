@@ -6,6 +6,8 @@ from fastapi.exceptions import HTTPException
 import requests
 
 from app.settings import Settings
+from app.models.tables import Campaign
+from app.models.factory import factory
 
 logger = logging.getLogger(__file__)
 
@@ -19,10 +21,16 @@ router = APIRouter()
 )
 async def launch_n8n_workflow(text: str) -> dict[str, Any]:
     try:
-        return requests.post(
+        requests.post( 
             Settings.N8N_WEBHOOK_URL,
             json={"text": text}
         ).json()
+
+        # Workflow launched - create a new campaign
+        campaign_obj = Campaign(query=text)
+        factory.add_object(campaign_obj)
+        return campaign_obj.model_dump()
+
     except Exception as e:
         raise HTTPException(
             status_code=400,
