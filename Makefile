@@ -23,10 +23,10 @@ setup-env: install-backend-deps install-client-deps setup-precommit-hooks
 run-client:
 	cd client && npm run dev
 
-make-migrations:
+alembic-make-migrations:
 	uv run alembic revision --autogenerate
 
-migrate:
+alembic-migrate:
 	uv run alembic upgrade head
 
 run-server:
