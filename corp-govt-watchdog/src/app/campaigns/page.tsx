@@ -21,7 +21,7 @@ export default function CampaignsPage() {
     };
 
     return (
-        <div className="max-w-lg p-6 text-black rounded-lg">
+        <div className="max-w-lg px-2 ml-8 text-black rounded-lg">
             <div className="p-8">
                 <h1 className="text-2xl font-bold">Campaign Management</h1>
                 <div>You can manually adjust your alert settings here, or type a  question to me below</div>
@@ -43,8 +43,8 @@ export default function CampaignsPage() {
                 <div>
                     <label className="block text-sm font-medium">Description</label>
                     <input
-                        type="email"
-                        name="email"
+                        type="text"
+                        name="name"
                         value={formData.email}
                         onChange={handleChange}
                         className="w-full mt-1 p-2 border rounded-md text-black"
@@ -54,7 +54,7 @@ export default function CampaignsPage() {
                 <div>
                     <label className="block text-sm font-medium">Regions Covered</label>
                     <input
-                        type="number"
+                        type="text"
                         name="age"
                         value={formData.age}
                         onChange={handleChange}
@@ -66,9 +66,9 @@ export default function CampaignsPage() {
                 <div>
                     <label className="block text-sm font-medium">Contact Information</label>
                     <input
-                        type="number"
-                        name="age"
-                        value={formData.age}
+                        type="text"
+                        name="gender"
+                        value={formData.gender}
                         onChange={handleChange}
                         className="w-full mt-1 p-2 border rounded-md text-black"
                         min="1"

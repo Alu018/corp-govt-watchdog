@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Send } from "lucide-react";
 import Footer from "../components/Footer" // Adjust the path if needed
 
 // export default function MessageInput() {
@@ -61,7 +62,7 @@ export default function Home() {
 
         <div className="w-full flex justify-center">
           <form
-            className="w-full"
+            className="w-full relative"
             action="https://openpaws.app.n8n.cloud/webhook-test/7d977fcf-05e7-4248-bf9e-04db99380c87"
             method="POST"
           >
@@ -69,10 +70,10 @@ export default function Home() {
               type="text"
               name="text"
               placeholder="Ask me about any animal welfare topic to start setting up your animal alert campaign"
-              className="border rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="border rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md"
             />
-            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
-              Send
+            <button type="submit" className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700">
+              <Send className="w-5 h-5" />
             </button>
           </form>
         </div>
