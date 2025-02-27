@@ -1,6 +1,10 @@
+'use client'
+
 import Image from "next/image";
 import { Send } from "lucide-react";
 import Footer from "../components/Footer" // Adjust the path if needed
+import api from "@/api";
+import { useState, ChangeEvent } from "react";
 
 // export default function MessageInput() {
 //   const [message, setMessage] = useState("");
@@ -33,6 +37,8 @@ import Footer from "../components/Footer" // Adjust the path if needed
 
 
 export default function Home() {
+  const [query, setQuery] = useState("")
+
   const promptSuggestions = [
     { id: 1, text: "Alert when government subsidies are allocated to factory farms" },
     { id: 2, text: "Monitor corporate donations to lawmakers voting on animal welfare" },
@@ -44,6 +50,17 @@ export default function Home() {
     { id: 8, text: "Notify when fast food chains update their animal welfare commitments" },
     { id: 9, text: "Track lawsuits filed against companies for animal cruelty" },
   ];
+
+  // Update the query state
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value)
+  }
+
+  // Submit the query
+  const submitQuery = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    await api.post("query", { text: query })
+  }
 
   return (
     <div className="flex flex-col items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -62,15 +79,17 @@ export default function Home() {
 
         <div className="w-full flex justify-center">
           <form
-            className="w-full relative"
-            action="https://openpaws.app.n8n.cloud/webhook-test/7d977fcf-05e7-4248-bf9e-04db99380c87"
-            method="POST"
+            className="w-full"
+            // action="https://openpaws.app.n8n.cloud/webhook-test/7d977fcf-05e7-4248-bf9e-04db99380c87"
+            // method="POST"
+            onSubmit={submitQuery}
           >
             <input
               type="text"
               name="text"
               placeholder="Ask me about any animal welfare topic to start setting up your animal alert campaign"
               className="border rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md"
+              onChange={onChange}
             />
             <button type="submit" className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700">
               <Send className="w-5 h-5" />
