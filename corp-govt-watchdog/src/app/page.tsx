@@ -80,8 +80,6 @@ export default function Home() {
         <div className="w-full flex justify-center">
           <form
             className="w-full"
-            // action="https://openpaws.app.n8n.cloud/webhook-test/7d977fcf-05e7-4248-bf9e-04db99380c87"
-            // method="POST"
             onSubmit={submitQuery}
           >
             <input
