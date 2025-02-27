@@ -14,12 +14,12 @@ export default function Sidebar() {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/messages" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-700">
+                        <Link href="/campaigns" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-700">
                             <Bell className="w-5 h-5" /> Campaigns
                         </Link>
                     </li>
                     <li>
-                        <Link href="/settings" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-700">
+                        <Link href="/" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-700">
                             <Settings className="w-5 h-5" /> Account
                         </Link>
                     </li>
