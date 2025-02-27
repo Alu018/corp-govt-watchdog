@@ -1,6 +1,11 @@
+'use client'
+
 import Image from "next/image";
 import { Send } from "lucide-react";
 import Footer from "../components/Footer" // Adjust the path if needed
+import api from "@/api";
+import { useState, ChangeEvent } from "react";
+import Snackbar from '@mui/material/Snackbar';
 
 // export default function MessageInput() {
 //   const [message, setMessage] = useState("");
@@ -33,6 +38,9 @@ import Footer from "../components/Footer" // Adjust the path if needed
 
 
 export default function Home() {
+  const [query, setQuery] = useState("")
+  const [snackbarOpen, setSnackbarOpen] = useState(false)
+
   const promptSuggestions = [
     { id: 1, text: "Alert when government subsidies are allocated to factory farms" },
     { id: 2, text: "Monitor corporate donations to lawmakers voting on animal welfare" },
@@ -45,7 +53,31 @@ export default function Home() {
     { id: 9, text: "Track lawsuits filed against companies for animal cruelty" },
   ];
 
+  // Update the query state
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value)
+  }
+
+  // Submit the query
+  const submitQuery = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    await api.post("query", { text: query })
+    setSnackbarOpen(true);
+  }
+
+  const handleClose = () => {
+    setSnackbarOpen(false);
+  };
+
   return (
+    <>
+    <Snackbar
+      anchorOrigin={{vertical: 'top', horizontal: 'center'}}
+      autoHideDuration={5000}
+      open={snackbarOpen}
+      onClose={handleClose}
+      message="Generating your report! This may take a few moments..."
+    />
     <div className="flex flex-col items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 items-center sm:items-start">
         <div className="w-full max-w-4xl flex justify-center items-center">
@@ -62,15 +94,15 @@ export default function Home() {
 
         <div className="w-full flex justify-center">
           <form
-            className="w-full relative"
-            action="https://openpaws.app.n8n.cloud/webhook-test/7d977fcf-05e7-4248-bf9e-04db99380c87"
-            method="POST"
+            className="w-full"
+            onSubmit={submitQuery}
           >
             <input
               type="text"
               name="text"
               placeholder="Ask me about any animal welfare topic to start setting up your animal alert campaign"
               className="border rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md"
+              onChange={onChange}
             />
             <button type="submit" className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700">
               <Send className="w-5 h-5" />
@@ -91,5 +123,6 @@ export default function Home() {
 
       </main>
     </div>
+    </>
   );
 }
