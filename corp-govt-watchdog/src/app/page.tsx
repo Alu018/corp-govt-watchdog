@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Send } from "lucide-react";
-import Footer from "../components/Footer" // Adjust the path if needed
+// import Footer from "../components/Footer" // Adjust the path if needed
 import api from "@/api";
 import { useState, ChangeEvent } from "react";
 import Snackbar from '@mui/material/Snackbar';
