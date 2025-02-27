@@ -5,6 +5,7 @@ import { Send } from "lucide-react";
 import Footer from "../components/Footer" // Adjust the path if needed
 import api from "@/api";
 import { useState, ChangeEvent } from "react";
+import Snackbar from '@mui/material/Snackbar';
 
 // export default function MessageInput() {
 //   const [message, setMessage] = useState("");
@@ -38,6 +39,7 @@ import { useState, ChangeEvent } from "react";
 
 export default function Home() {
   const [query, setQuery] = useState("")
+  const [snackbarOpen, setSnackbarOpen] = useState(false)
 
   const promptSuggestions = [
     { id: 1, text: "Alert when government subsidies are allocated to factory farms" },
@@ -60,9 +62,22 @@ export default function Home() {
   const submitQuery = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     await api.post("query", { text: query })
+    setSnackbarOpen(true);
   }
 
+  const handleClose = () => {
+    setSnackbarOpen(false);
+  };
+
   return (
+    <>
+    <Snackbar
+      anchorOrigin={{vertical: 'top', horizontal: 'center'}}
+      autoHideDuration={5000}
+      open={snackbarOpen}
+      onClose={handleClose}
+      message="Generating your report! This may take a few moments..."
+    />
     <div className="flex flex-col items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 items-center sm:items-start">
         <div className="w-full max-w-4xl flex justify-center items-center">
@@ -108,5 +123,6 @@ export default function Home() {
 
       </main>
     </div>
+    </>
   );
 }
