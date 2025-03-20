@@ -93,7 +93,12 @@ export default function Home() {
           <div className="flex justify-center text-xl text-center">Watchdog is your personal assistant for researching, monitoring, and reporting on regulatory changes impacting the treatment of animals</div>
 
           <div className="w-full flex justify-center">
-            <form className="w-full max-w-2xl" onSubmit={submitQuery}>
+            <form
+              className="w-full max-w-2xl"
+              // onSubmit={submitQuery}
+              action="https://openpaws.app.n8n.cloud/webhook-test/7d977fcf-05e7-4248-bf9e-04db99380c87"
+              method="POST"
+              >
               <div className="relative">
                 <input
                   type="text"
